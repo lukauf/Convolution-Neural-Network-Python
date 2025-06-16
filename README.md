@@ -13,5 +13,5 @@ pip install requirements.txt
 2. Execute o script:
 
 ```bash
-python cnn.py
+python run_cnn.py
 ```
