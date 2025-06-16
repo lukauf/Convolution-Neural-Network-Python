@@ -10,8 +10,18 @@ Este projeto contém um exemplo básico de uma CNN usando Keras/TensorFlow para 
 pip install requirements.txt
 ```
 
-2. Execute o script:
+2. Execute o script para os pesos adquiridos do treinamento serem salvos:
+
+```bash
+python train_cnn.py
+```
+
+3. Execute o script para rodar a CNN com os pesos adquiridos no passo 2:
 
 ```bash
 python run_cnn.py
+
 ```
+
+(Quando rodar a rede, os numeros que aparecem ao lado da barra de carregamento não é referente ao número de imagens processadas e sim o número de batchs processados)
+
