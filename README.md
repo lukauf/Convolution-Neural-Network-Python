@@ -7,7 +7,7 @@ Este projeto contém um exemplo básico de uma CNN usando Keras/TensorFlow para 
 1. Instale as dependências:
 
 ```bash
-pip install tensorflow
+pip install requirements.txt
 ```
 
 2. Execute o script:
