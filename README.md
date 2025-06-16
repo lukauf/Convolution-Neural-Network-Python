@@ -23,7 +23,7 @@ python run_cnn.py
 
 ```
 
-(Quando executar a rede, os numeros que aparecem ao lado da barra de carregamento não é referente ao número de imagens processadas, mas sim ao número de batchs processados)
+(Quando executar a rede, os numeros que aparecem ao lado da barra de carregamento não são referentes ao número de imagens processadas, mas sim ao número de batches processados)
 
 
 
