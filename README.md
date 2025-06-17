@@ -7,7 +7,7 @@ Este projeto contém um exemplo básico de uma CNN usando Keras/TensorFlow para 
 1. Instale as dependências:
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 2. Execute o script para os pesos adquiridos do treinamento serem salvos:
@@ -21,6 +21,12 @@ python train_cnn.py
 ```bash
 python run_cnn.py
 
+```
+
+## Para o classificador binário
+```bash
+python train_cnn_binary.py
+python run_cnn_binary.py
 ```
 
 (Quando executar a rede, os numeros que aparecem ao lado da barra de carregamento não são referentes ao número de imagens processadas, mas sim ao número de batches processados)
