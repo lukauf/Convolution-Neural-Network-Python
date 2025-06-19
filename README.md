@@ -37,6 +37,16 @@ python visualize.py
 
 ```
 
+(Quando executar a rede, os numeros que aparecem ao lado da barra de carregamento não são referentes ao número de imagens processadas, mas sim ao número de batches processados)
+
+
+
+(O arquivo .h5 gerado pelo treino, é referente aos pesos ajustados pelo treino, você não precisa acessar esse arquivo, ele somente precisa ser gerado para que run_cnn.py seja executado com sucesso)
+
+
+
+
+
 
 
 
@@ -51,13 +61,6 @@ Execute o script para ver um resumo sobre a estrutura
 ```bash
 python Summary_binary.py
 ```
-
-
-(Quando executar a rede, os numeros que aparecem ao lado da barra de carregamento não são referentes ao número de imagens processadas, mas sim ao número de batches processados)
-
-
-
-(O arquivo .h5 gerado pelo treino, é referente aos pesos ajustados pelo treino, você não precisa acessar esse arquivo, ele somente precisa ser gerado para que run_cnn.py seja executado com sucesso)
 
 
 
