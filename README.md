@@ -30,6 +30,15 @@ python Summary_multiclass.py
 
 ``` 
 
+(Para visualizar 10 imagens do dataset, execute o script visualize.py)
+
+```bash
+python visualize.py
+
+```
+
+
+
 
 ## Para o classificador binário
 ```bash
@@ -51,11 +60,5 @@ python Summary_binary.py
 (O arquivo .h5 gerado pelo treino, é referente aos pesos ajustados pelo treino, você não precisa acessar esse arquivo, ele somente precisa ser gerado para que run_cnn.py seja executado com sucesso)
 
 
-(Para visualizar 10 imagens do dataset, execute o script visualize.py)
-
-```bash
-python visualize.py
-
-```
 
 
