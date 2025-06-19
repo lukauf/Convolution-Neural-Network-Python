@@ -19,9 +19,9 @@ class CNNModel:
             layers.MaxPooling2D((2, 2)),  # reduz 14x14 → 7x7
 
             # Camadas densas (MLP)
-            layers.Flatten(),  # transforma 7x7x64 em vetor de 3136 elementos
+            layers.Flatten(),  # transforma 7x7x64 em vetor de 3136 elementos, entao a mlp vai ter 3136 neuronios na camada de entrada
             layers.Dense(128, activation='relu'), #128 neuronios (numero arbitrario) na camada escondida
-            layers.Dense(10, activation='softmax')  # 10 classes do dataset Fashion MNIST
+            layers.Dense(10, activation='softmax')  # 10 classes do dataset Fashion MNIST, 10 neur
         ])
         return model
 
