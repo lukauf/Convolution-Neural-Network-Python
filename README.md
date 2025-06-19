@@ -23,11 +23,26 @@ python run_cnn.py
 
 ```
 
+4. Execute o script para ver um resumo sobre a estrutura
+
+```bash
+python Summary_multiclass.py
+
+``` 
+
+
 ## Para o classificador binário
 ```bash
 python train_cnn_binary.py
 python run_cnn_binary.py
 ```
+
+Execute o script para ver um resumo sobre a estrutura
+
+```bash
+python Summary_binary.py
+```
+
 
 (Quando executar a rede, os numeros que aparecem ao lado da barra de carregamento não são referentes ao número de imagens processadas, mas sim ao número de batches processados)
 
