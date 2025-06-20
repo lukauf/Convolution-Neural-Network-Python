@@ -1,3 +1,4 @@
+import argparse
 from cnn_model import CNNModel
 
 def explain_layer(layer):
@@ -55,7 +56,13 @@ def print_summary_legend():
     print("------------------------------------------------------------\n")
 
 def main():
-    cnn = CNNModel()
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("-m", "--mode", help="multi or binary", required=True, choices=["multi", "binary"], default="multi")
+
+    args = parser.parse_args()
+
+    cnn = CNNModel(params_filepath=f"./trained-models/cnn_fashion.{args.mode}.params.txt")
     model = cnn.model
 
     print("RESUMO DO MODELO (model.summary()):\n")

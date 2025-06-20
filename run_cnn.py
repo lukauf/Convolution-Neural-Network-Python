@@ -1,8 +1,6 @@
 from load_ubyte import load_fashion_mnist_ubyte
 from cnn_model import CNNModel
 import argparse
-import os
-import fnmatch
 import tensorflow as tf
 import numpy as np
 
