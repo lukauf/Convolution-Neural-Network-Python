@@ -44,6 +44,8 @@ cnn.compile(args.learningRate)
 cnn.fit(train_ds, args.epochs)
 
 # Salva os pesos
+if not tf.io.gfile.exists("./trained-models"):
+    tf.io.gfile.makedirs("./trained-models")
 model_weights_filepath = f"./trained-models/cnn_fashion.{args.mode}.weights.h5"
 cnn.save_weights(model_weights_filepath)
 params_filepath = f"./trained-models/cnn_fashion.{args.mode}.params.txt"
