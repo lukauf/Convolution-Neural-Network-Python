@@ -10,7 +10,7 @@ parser.add_argument("-m", "--mode", help="multi or binary", required=True, choic
 parser.add_argument("-cl", "--convolutionLayers", help="Number of convolution layers", required=False, type=int, default=2)
 parser.add_argument("-e", "--epochs", help="Number of epochs for training", type=int, default=5, required=False)
 parser.add_argument("-dn", "--denseNeurons", help="Size", type=int, default=128, required=False)
-parser.add_argument("-lr", "--learningRate", help="Size", type=float, default=128, required=False)
+parser.add_argument("-lr", "--learningRate", help="Size", type=float, default=0.001, required=False)
 
 args = parser.parse_args()
 

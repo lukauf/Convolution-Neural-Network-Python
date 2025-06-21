@@ -1,3 +1,0 @@
-mode=binary
-convolutionLayers=2
-denseNeurons=128

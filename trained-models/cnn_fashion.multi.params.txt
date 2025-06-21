@@ -1,3 +1,0 @@
-mode=multi
-convolutionLayers=2
-denseNeurons=100
