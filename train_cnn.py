@@ -7,7 +7,6 @@ import argparse
 parser = argparse.ArgumentParser()
 
 parser.add_argument("-m", "--mode", help="multi or binary", required=True, choices=["multi", "binary"], default="multi")
-parser.add_argument("-cl", "--convolutionLayers", help="Number of convolution layers", required=False, type=int, default=2)
 parser.add_argument("-e", "--epochs", help="Number of epochs for training", type=int, default=5, required=False)
 parser.add_argument("-dn", "--denseNeurons", help="Size", type=int, default=128, required=False)
 parser.add_argument("-lr", "--learningRate", help="Size", type=float, default=0.001, required=False)
@@ -39,7 +38,7 @@ x_train = x_train[..., tf.newaxis]
 train_ds = tf.data.Dataset.from_tensor_slices((x_train, y_train)).shuffle(10000).batch(32)
 
 # Instancia e treina o modelo
-cnn = CNNModel(mode=args.mode, convolutionLayers=args.convolutionLayers, denseNeurons=args.denseNeurons)
+cnn = CNNModel(mode=args.mode, denseNeurons=args.denseNeurons)
 cnn.compile(args.learningRate)
 cnn.fit(train_ds, args.epochs)
 

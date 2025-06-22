@@ -3,18 +3,16 @@ from keras import layers, models
 
 class CNNModel:
     mode = None
-    convolutionLayers = None
     denseNeurons = None
     model = None
 
-    def __init__(self=None, mode=None, convolutionLayers=None, denseNeurons=None, params_filepath=None):
+    def __init__(self=None, mode=None, denseNeurons=None, params_filepath=None):
         if params_filepath:
             self.load_params(params_filepath)
         else:
-            if mode is None or convolutionLayers is None or denseNeurons is None:
-                raise ValueError("mode, convolutionLayers and denseNeurons must be provided if params_filepath is not given.")
+            if mode is None or denseNeurons is None:
+                raise ValueError("mode and denseNeurons must be provided if params_filepath is not given.")
             self.mode = mode
-            self.convolutionLayers = convolutionLayers
             self.denseNeurons = denseNeurons
 
         self.model = self._build_model()
@@ -31,11 +29,11 @@ class CNNModel:
             layers.Input(shape=(28, 28, 1)),
 
             # Camada convolucional 1
-            layers.Conv2D(32, (3, 3), padding='same', activation='relu'),
+            layers.Conv2D(64, (3, 3), padding='same', activation='relu'),
             layers.MaxPooling2D((2, 2)),  # reduz 28x28 → 14x14
 
             # Camada convolucional 2
-            layers.Conv2D(64, (3, 3), padding='same', activation='relu'),
+            layers.Conv2D(128, (3, 3), padding='same', activation='relu'),
             layers.MaxPooling2D((2, 2)),  # reduz 14x14 → 7x7
 
             # Camadas densas (MLP)
@@ -53,10 +51,19 @@ class CNNModel:
             metrics=['accuracy']#somente para monitoramento, nesse caso é a acuracia
         )
 
-    def fit(self, train_ds, epochs=5): #esse metodo treina a rede neural
-        #train ds: conjunto de dados de treinamento(imagens + rotulos)
-        #epochs: numero de epocas
-        self.model.fit(train_ds, epochs=epochs) #chamada da biblioteca
+    def fit(self, train_ds, epochs=5):  # esse metodo treina a rede neural, com condições de parada de 99% de acurácia
+        class StopAtAccuracy(tf.keras.callbacks.Callback):
+            def on_epoch_end(self, epoch, logs=None):
+                acc = logs.get("accuracy")
+                if acc is not None and acc >= 0.99:
+                    print(f"\nParando treino: acurácia atingiu {acc*100:.2f}%")
+                    self.model.stop_training = True
+
+        self.model.fit(
+            train_ds,
+            epochs=epochs,
+            callbacks=[StopAtAccuracy()]
+        )
 
     def evaluate(self, test_ds):  #testa o desempenho final da rede em dados nunca vistos (test_ds)
         #calcula e retorna o loss e accuracy
@@ -75,7 +82,6 @@ class CNNModel:
     def save_params(self, params_filepath):
         with open(params_filepath, "w") as f:
             f.write(f"mode={self.mode}\n")
-            f.write(f"convolutionLayers={self.convolutionLayers}\n")
             f.write(f"denseNeurons={self.denseNeurons}\n")
             
     def load_params(self, params_filepath):
@@ -86,7 +92,6 @@ class CNNModel:
                 params[key] = value
 
         self.mode = params.get("mode", "multi")
-        self.convolutionLayers = int(params.get("convolutionLayers", 2))
         self.epochs = int(params.get("epochs", 5))
         self.denseNeurons = int(params.get("denseNeurons", 128))
         self.learningRate = float(params.get("learningRate", 0.001))
